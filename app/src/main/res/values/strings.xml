@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">D_PA</string>
+    <string name="activity_splash_signin">Zaloguj</string>
+    <string name="activity_splash_password">Hasło</string>
 </resources>
