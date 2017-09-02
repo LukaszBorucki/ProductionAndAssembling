@@ -4,12 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import co.borucki.d_pa.DTO.MachinesDTO;
+import co.borucki.d_pa.DTO.MachinesUsageDTO;
 import co.borucki.d_pa.DTO.MessageDTO;
 import co.borucki.d_pa.DTO.ProductionOrdersDTO;
 import co.borucki.d_pa.DTO.ProductionOrdersHistoryDTO;
 import co.borucki.d_pa.DTO.ProductionOrdersRealizationDTO;
 import co.borucki.d_pa.DTO.UserDTO;
 import co.borucki.d_pa.model.Machines;
+import co.borucki.d_pa.model.MachinesUsage;
 import co.borucki.d_pa.model.Message;
 import co.borucki.d_pa.model.ProductionOrdersRealization;
 import co.borucki.d_pa.model.ProductionOrders;
@@ -175,5 +177,29 @@ public class Mapper {
                 , machinesDTO.getStatus());
     }
 
+    public static List<MachinesUsage> fromMachinesUsageDTOToMachinesUsage(List<MachinesUsageDTO> machinesUsageDTOs) {
+        List<MachinesUsage> machinesUsageList = new ArrayList<>();
+        for (MachinesUsageDTO machinesUsageDTO : machinesUsageDTOs) {
+            machinesUsageList.add(new MachinesUsage(machinesUsageDTO.getId()
+                    , machinesUsageDTO.getMachinesId()
+                    , machinesUsageDTO.getDate()
+                    , machinesUsageDTO.getStartDateTime()
+                    , machinesUsageDTO.getStopDateTime()
+                    , machinesUsageDTO.getStatus()
+                    , machinesUsageDTO.getEmployee()
+                    , machinesUsageDTO.getOrderId()));
+        }
+        return machinesUsageList;
+    }
 
+    public static MachinesUsage fromMachinesUsageDTOToMachinesUsage(MachinesUsageDTO machinesUsageDTO) {
+        return new MachinesUsage(machinesUsageDTO.getId()
+                , machinesUsageDTO.getMachinesId()
+                , machinesUsageDTO.getDate()
+                , machinesUsageDTO.getStartDateTime()
+                , machinesUsageDTO.getStopDateTime()
+                , machinesUsageDTO.getStatus()
+                , machinesUsageDTO.getEmployee()
+                , machinesUsageDTO.getOrderId());
+    }
 }
