@@ -35,5 +35,33 @@ public class DpaRepositoryImpl implements DpaRepository {
         mSharedPreferences.setDefaultUser(user);
     }
 
+    @Override
+    public void setSignedUser(String user) {
+        mSharedPreferences.setSignedUser(user);
+    }
 
+    @Override
+    public String getSignedUser() {
+        return mSharedPreferences.getSignedUser();
+    }
+
+    @Override
+    public void setSignedUserPassword(String password) {
+        mSharedPreferences.setSignedUserPassword(password);
+    }
+
+    @Override
+    public String getSignedUserPassword() {
+        return mSharedPreferences.getSignedUserPassword();
+    }
+
+    @Override
+    public int getLastMessageIndex() {
+        return mSharedPreferences.getLastMessageIndex();
+    }
+
+    @Override
+    public void setLastMessageIndex(int index) {
+        mSharedPreferences.setLastMessageIndex(index);
+    }
 }

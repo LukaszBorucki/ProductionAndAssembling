@@ -50,19 +50,26 @@ public class SplashActivity extends AppCompatActivity {
     private Button mLogin;
     private Activity activity = this;
     private String myPassword;
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         if (mDpaRepository.getDeviceId().equals("")) {
+
             setDeviceId();
+
         } else {
             if (mUserRepository.countUsers() > 0) {
                 loginUser();
             } else {
-                GetAllUsers getAllUsers = new GetAllUsers(getApplicationContext(), this);
-                getAllUsers.execute(mDpaRepository.getDeviceId());
+                if (MyDevice.isOnLine(this)) {
+                    GetAllUsers getAllUsers = new GetAllUsers(getApplicationContext(), this);
+                    getAllUsers.execute(mDpaRepository.getDeviceId());
+                } else {
+                    Toast.makeText(activity, R.string.error_no_internet, Toast.LENGTH_SHORT).show();
+                }
             }
         }
     }
@@ -90,20 +97,24 @@ public class SplashActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                User user = allUsers.get(spinner.getSelectedItemPosition());
+                user = allUsers.get(spinner.getSelectedItemPosition());
                 String login = user.getLogin();
                 myPassword = mPassword.getText().toString();
                 if (user.getPassword() == null
                         || user.getPassword().equals("")
                         || user.getPassword().equals("password")) {
-                    CheckAccessPermission checkAccessPermission = new CheckAccessPermission(getApplicationContext(), activity);
-                    checkAccessPermission.execute(mDpaRepository.getDeviceId(), login, myPassword);
+                    if (MyDevice.isOnLine(getApplicationContext())) {
+                        CheckAccessPermission checkAccessPermission = new CheckAccessPermission(getApplicationContext(), activity);
+                        checkAccessPermission.execute(mDpaRepository.getDeviceId(), login, myPassword);
+                    } else {
+                        Toast.makeText(activity, R.string.error_no_internet, Toast.LENGTH_LONG).show();
+                    }
                 } else {
                     if (user.getPassword().equals(MD5Encryption.encrypt(myPassword))) {
                         mDpaRepository.setDefaultUser(user.getLogin());
                         startMainActivity();
                     } else {
-                        Toast.makeText(getApplicationContext(), "Błędne hasło", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), R.string.error_incorrect_password, Toast.LENGTH_LONG).show();
                     }
                 }
             }
@@ -111,6 +122,15 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     private void startMainActivity() {
+        mDpaRepository.setSignedUser(user.getLogin());
+        mDpaRepository.setSignedUserPassword(user.getPassword());
+        if (MyDevice.isOnLine(activity)) {
+
+
+
+        }else {
+            Toast.makeText(activity, R.string.error_no_internet, Toast.LENGTH_LONG).show();
+        }
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();

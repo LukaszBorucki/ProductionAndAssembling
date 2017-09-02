@@ -15,6 +15,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import co.borucki.d_pa.R;
 import co.borucki.d_pa.model.User;
 import co.borucki.d_pa.repository.DpaRepository;
 import co.borucki.d_pa.repository.DpaRepositoryImpl;
@@ -94,7 +95,7 @@ public class CheckAccessPermission extends AsyncTask<String, Void, String> {
             activity.finish();
 
         } else {
-            Toast.makeText(context, "błąd logowania", Toast.LENGTH_LONG).show();
+            Toast.makeText(context, R.string.error_signIn, Toast.LENGTH_LONG).show();
         }
     }
 }
