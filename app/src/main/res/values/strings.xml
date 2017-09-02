@@ -16,5 +16,6 @@
     <string name="single_message_view_button_1">button 1</string>
     <string name="single_message_view_delete">Usuń wiadomość</string>
     <string name="SingleMessageViewFrom">Ja</string>
+    <string name="MainActivityMenuItemProduction">Produkcja</string>
 
 </resources>

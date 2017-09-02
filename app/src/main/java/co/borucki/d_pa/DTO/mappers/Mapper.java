@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import co.borucki.d_pa.DTO.MessageDTO;
+import co.borucki.d_pa.DTO.ProductionOrdersDTO;
 import co.borucki.d_pa.DTO.UserDTO;
 import co.borucki.d_pa.model.Message;
+import co.borucki.d_pa.model.ProductionOrders;
 import co.borucki.d_pa.model.User;
 
 public class Mapper {
@@ -59,4 +61,33 @@ public class Mapper {
         }
         return messageList;
     }
+
+
+    public static List<ProductionOrders> fromProductionOrdersDTOToProductionOrders(List<ProductionOrdersDTO> productionOrdersDTOs) {
+        List<ProductionOrders> productionOrdersList = new ArrayList<>();
+        for (ProductionOrdersDTO productionOrdersDTO : productionOrdersDTOs) {
+            productionOrdersList.add(new ProductionOrders(productionOrdersDTO.getIdOrderTurning()
+                    , productionOrdersDTO.getOrderProduct()
+                    , productionOrdersDTO.getOrderStatus()
+                    , productionOrdersDTO.getOrderDate()
+                    , productionOrdersDTO.getOrderTermOfRealization()
+                    , productionOrdersDTO.getOrderQuantity()
+                    , productionOrdersDTO.getOrderEmployee()
+                    , productionOrdersDTO.getOrderMachineId()));
+        }
+        return productionOrdersList;
+    }
+
+    public static ProductionOrders fromProductionOrdersDTOToProductionOrders(ProductionOrdersDTO productionOrdersDTO) {
+        return new ProductionOrders(productionOrdersDTO.getIdOrderTurning()
+                , productionOrdersDTO.getOrderProduct()
+                , productionOrdersDTO.getOrderStatus()
+                , productionOrdersDTO.getOrderDate()
+                , productionOrdersDTO.getOrderTermOfRealization()
+                , productionOrdersDTO.getOrderQuantity()
+                , productionOrdersDTO.getOrderEmployee()
+                , productionOrdersDTO.getOrderMachineId());
+    }
+
+
 }

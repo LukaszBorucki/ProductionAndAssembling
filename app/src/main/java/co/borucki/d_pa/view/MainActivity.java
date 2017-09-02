@@ -23,6 +23,7 @@ import co.borucki.d_pa.model.DpaMenuItem;
 import co.borucki.d_pa.repository.DpaRepository;
 import co.borucki.d_pa.repository.DpaRepositoryImpl;
 import co.borucki.d_pa.view.fragments.MessageFragment;
+import co.borucki.d_pa.view.fragments.ProductionFragment;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DpaRepository mDpaRepository = DpaRepositoryImpl.getInstance();
@@ -39,7 +40,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        menuItemList.add(new DpaMenuItem(1, 100, getString(R.string.MainActivityMenuItemMessage), MessageFragment.class, R.drawable.ic_message_black_24dp));
+        menuItemList.add(new DpaMenuItem(1, 100, getString(R.string.MainActivityMenuItemProduction), ProductionFragment.class, R.drawable.production));
+        menuItemList.add(new DpaMenuItem(2, 200, getString(R.string.MainActivityMenuItemMessage), MessageFragment.class, R.drawable.ic_message_black_24dp));
 
         navigationMenu.setNavigationItemSelectedListener(this);
         final Menu menu = navigationMenu.getMenu();
