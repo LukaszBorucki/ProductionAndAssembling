@@ -6,8 +6,10 @@ import java.util.List;
 import co.borucki.d_pa.DTO.MessageDTO;
 import co.borucki.d_pa.DTO.ProductionOrdersDTO;
 import co.borucki.d_pa.DTO.ProductionOrdersHistoryDTO;
+import co.borucki.d_pa.DTO.ProductionOrdersRealizationDTO;
 import co.borucki.d_pa.DTO.UserDTO;
 import co.borucki.d_pa.model.Message;
+import co.borucki.d_pa.model.ProductionOrdersRealization;
 import co.borucki.d_pa.model.ProductionOrders;
 import co.borucki.d_pa.model.ProductionOrdersHistory;
 import co.borucki.d_pa.model.User;
@@ -115,4 +117,37 @@ public class Mapper {
                 , productionOrdersHistoryDTO.getContents());
     }
 
+    public static List<ProductionOrdersRealization> fromProductOrdersRealizationDTOToProductOrdersRealization(List<ProductionOrdersRealizationDTO> productionOrdersRealizationDTOs) {
+        List<ProductionOrdersRealization> productionOrdersRealizationList = new ArrayList<>();
+        for (ProductionOrdersRealizationDTO productionOrdersRealizationDTO : productionOrdersRealizationDTOs) {
+            productionOrdersRealizationList.add(new ProductionOrdersRealization(productionOrdersRealizationDTO.getId()
+                    , productionOrdersRealizationDTO.getOrderId()
+                    , productionOrdersRealizationDTO.getSaveDate()
+                    , productionOrdersRealizationDTO.getStartDateTime()
+                    , productionOrdersRealizationDTO.getStopDateTime()
+                    , productionOrdersRealizationDTO.getQuantity()
+                    , productionOrdersRealizationDTO.getMachineId()
+                    , productionOrdersRealizationDTO.getUnitTime()
+                    , productionOrdersRealizationDTO.getSpeedSpindle1()
+                    , productionOrdersRealizationDTO.getSpeedSpindle2()
+                    , productionOrdersRealizationDTO.getFeederateWorking()
+                    , productionOrdersRealizationDTO.getFeederateFast()));
+        }
+        return productionOrdersRealizationList;
+    }
+
+    public static ProductionOrdersRealization fromProductOrdersRealizationDTOToProductOrdersRealization(ProductionOrdersRealizationDTO productionOrdersRealizationDTO) {
+        return new ProductionOrdersRealization(productionOrdersRealizationDTO.getId()
+                , productionOrdersRealizationDTO.getOrderId()
+                , productionOrdersRealizationDTO.getSaveDate()
+                , productionOrdersRealizationDTO.getStartDateTime()
+                , productionOrdersRealizationDTO.getStopDateTime()
+                , productionOrdersRealizationDTO.getQuantity()
+                , productionOrdersRealizationDTO.getMachineId()
+                , productionOrdersRealizationDTO.getUnitTime()
+                , productionOrdersRealizationDTO.getSpeedSpindle1()
+                , productionOrdersRealizationDTO.getSpeedSpindle2()
+                , productionOrdersRealizationDTO.getFeederateWorking()
+                , productionOrdersRealizationDTO.getFeederateFast());
+    }
 }

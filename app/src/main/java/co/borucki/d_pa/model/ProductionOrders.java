@@ -3,7 +3,7 @@ package co.borucki.d_pa.model;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
-@DatabaseTable(tableName = "orderProduction")
+@DatabaseTable(tableName = "productionOrders")
 public class ProductionOrders {
     @DatabaseField(columnName = "id", id = true)
     private String idOrderTurning;
