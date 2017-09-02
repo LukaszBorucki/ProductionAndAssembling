@@ -3,23 +3,14 @@ package co.borucki.d_pa.DTO;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
-@DatabaseTable(tableName = "orderProduction")
 public class ProductionOrdersDTO {
-    @DatabaseField(columnName = "id", id = true)
     private String idOrderTurning;
-    @DatabaseField(columnName = "orderProduct")
     private String orderProduct;
-    @DatabaseField(columnName = "orderStatus")
     private String orderStatus;
-    @DatabaseField(columnName = "orderDate")
     private String orderDate;
-    @DatabaseField(columnName = "orderTermOfRealization")
     private String orderTermOfRealization;
-    @DatabaseField(columnName = "orderQuantity")
     private int orderQuantity;
-    @DatabaseField(columnName = "orderEmployee")
     private String orderEmployee;
-    @DatabaseField(columnName = "orderMachineId")
     private String orderMachineId;
 
     public ProductionOrdersDTO() {

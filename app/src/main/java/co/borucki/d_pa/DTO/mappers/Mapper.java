@@ -5,9 +5,11 @@ import java.util.List;
 
 import co.borucki.d_pa.DTO.MessageDTO;
 import co.borucki.d_pa.DTO.ProductionOrdersDTO;
+import co.borucki.d_pa.DTO.ProductionOrdersHistoryDTO;
 import co.borucki.d_pa.DTO.UserDTO;
 import co.borucki.d_pa.model.Message;
 import co.borucki.d_pa.model.ProductionOrders;
+import co.borucki.d_pa.model.ProductionOrdersHistory;
 import co.borucki.d_pa.model.User;
 
 public class Mapper {
@@ -89,5 +91,28 @@ public class Mapper {
                 , productionOrdersDTO.getOrderMachineId());
     }
 
+    public static List<ProductionOrdersHistory> fromProductOrdersHistoryDTOToProductOrdersHistory(List<ProductionOrdersHistoryDTO> productionOrdersHistoryDTOs) {
+        List<ProductionOrdersHistory> productionOrdersHistoryList = new ArrayList<>();
+        for (ProductionOrdersHistoryDTO productionOrdersHistoryDTO : productionOrdersHistoryDTOs) {
+            productionOrdersHistoryList.add(new ProductionOrdersHistory(productionOrdersHistoryDTO.getIdOrderTurning()
+                    , productionOrdersHistoryDTO.getOrderId()
+                    , productionOrdersHistoryDTO.getDate()
+                    , productionOrdersHistoryDTO.getTime()
+                    , productionOrdersHistoryDTO.getEmployee()
+                    , productionOrdersHistoryDTO.getContents()));
+        }
+
+
+        return productionOrdersHistoryList;
+    }
+
+    public static ProductionOrdersHistory fromProductOrdersHistoryDTOToProductOrdersHistory(ProductionOrdersHistoryDTO productionOrdersHistoryDTO) {
+        return new ProductionOrdersHistory(productionOrdersHistoryDTO.getIdOrderTurning()
+                , productionOrdersHistoryDTO.getOrderId()
+                , productionOrdersHistoryDTO.getDate()
+                , productionOrdersHistoryDTO.getTime()
+                , productionOrdersHistoryDTO.getEmployee()
+                , productionOrdersHistoryDTO.getContents());
+    }
 
 }
