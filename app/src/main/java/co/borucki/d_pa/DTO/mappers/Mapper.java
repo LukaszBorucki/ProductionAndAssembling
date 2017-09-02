@@ -3,11 +3,13 @@ package co.borucki.d_pa.DTO.mappers;
 import java.util.ArrayList;
 import java.util.List;
 
+import co.borucki.d_pa.DTO.MachinesDTO;
 import co.borucki.d_pa.DTO.MessageDTO;
 import co.borucki.d_pa.DTO.ProductionOrdersDTO;
 import co.borucki.d_pa.DTO.ProductionOrdersHistoryDTO;
 import co.borucki.d_pa.DTO.ProductionOrdersRealizationDTO;
 import co.borucki.d_pa.DTO.UserDTO;
+import co.borucki.d_pa.model.Machines;
 import co.borucki.d_pa.model.Message;
 import co.borucki.d_pa.model.ProductionOrdersRealization;
 import co.borucki.d_pa.model.ProductionOrders;
@@ -150,4 +152,28 @@ public class Mapper {
                 , productionOrdersRealizationDTO.getFeederateWorking()
                 , productionOrdersRealizationDTO.getFeederateFast());
     }
+
+    public static List<Machines> fromMachinesDTOToMachines(List<MachinesDTO> machinesDTOs) {
+        List<Machines> machinesList = new ArrayList<>();
+        for (MachinesDTO machinesDTO : machinesDTOs) {
+            machinesList.add(new Machines(machinesDTO.getId()
+                    , machinesDTO.getName()
+                    , machinesDTO.getManufactureYear()
+                    , machinesDTO.getTrademark()
+                    , machinesDTO.getProcesingMaterial()
+                    , machinesDTO.getStatus()));
+        }
+        return machinesList;
+    }
+
+    public static Machines fromMachinesDTOToMachines(MachinesDTO machinesDTO) {
+        return new Machines(machinesDTO.getId()
+                , machinesDTO.getName()
+                , machinesDTO.getManufactureYear()
+                , machinesDTO.getTrademark()
+                , machinesDTO.getProcesingMaterial()
+                , machinesDTO.getStatus());
+    }
+
+
 }

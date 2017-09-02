@@ -3,31 +3,18 @@ package co.borucki.d_pa.DTO;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
-@DatabaseTable(tableName = "productionOrderRealization")
 public class ProductionOrdersRealizationDTO {
-    @DatabaseField(columnName = "id", index = true)
     private int id;
-    @DatabaseField(columnName = "orderId")
     private String orderId;
-    @DatabaseField(columnName = "saveDate")
     private String saveDate;
-    @DatabaseField(columnName = "startDateTime")
     private String startDateTime;
-    @DatabaseField(columnName = "stopDateTime")
     private String stopDateTime;
-    @DatabaseField(columnName = "quantity")
     private int quantity;
-    @DatabaseField(columnName = "machineId")
     private String machineId;
-    @DatabaseField(columnName = "unitTime")
     private float unitTime;
-    @DatabaseField(columnName = "speedSpindle1")
     private String speedSpindle1;
-    @DatabaseField(columnName = "speedSpindle2")
     private String speedSpindle2;
-    @DatabaseField(columnName = "feederateWorking")
     private String feederateWorking;
-    @DatabaseField(columnName = "feederateFast")
     private String feederateFast;
 
     public ProductionOrdersRealizationDTO() {
