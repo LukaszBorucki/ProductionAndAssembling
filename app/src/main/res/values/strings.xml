@@ -1,5 +1,20 @@
 <resources>
     <string name="app_name">D_PA</string>
-    <string name="activity_splash_signin">Zaloguj</string>
+    <string name="activity_splash_signIn">Zaloguj</string>
     <string name="activity_splash_password">Hasło</string>
+    <string name="error_signIn">błąd logowania</string>
+    <string name="submenu_messages">Wiadomości</string>
+    <string name="MainActivityMenuItemMessage">Wiadomości</string>
+    <string name="error_no_internet">Brak połączenia z internetem</string>
+    <string name="error_incorrect_password">Niepoprawne logowanie</string>
+    <string name="logotype">logotype</string>
+    <string name="fragment_message_unread">Nieprzeczytane</string>
+    <string name="fragment_message_all">Wszystkie</string>
+    <string name="single_message_view_from">od</string>
+    <string name="single_message_view_date">data</string>
+    <string name="single_message_view_contents">messages</string>
+    <string name="single_message_view_button_1">button 1</string>
+    <string name="single_message_view_delete">Usuń wiadomość</string>
+    <string name="SingleMessageViewFrom">Ja</string>
+
 </resources>

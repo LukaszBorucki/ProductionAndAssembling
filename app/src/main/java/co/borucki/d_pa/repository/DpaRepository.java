@@ -9,5 +9,13 @@ public interface DpaRepository {
 
     void setDefaultUser(String user);
 
+    void setSignedUser(String user);
 
+    String getSignedUser();
+
+    void setSignedUserPassword(String password);
+
+    String getSignedUserPassword();
+    int getLastMessageIndex();
+    void setLastMessageIndex(int index);
 }
