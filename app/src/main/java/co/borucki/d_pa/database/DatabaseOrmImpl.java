@@ -336,4 +336,19 @@ public class DatabaseOrmImpl extends OrmLiteSqliteOpenHelper implements Database
         }
         return null;
     }
+
+    @Override
+    public List<ProductionOrderHistory> getAllProductionOrderHistoryByOrderId(String orderId) {
+        QueryBuilder<ProductionOrderHistory, Integer> query = mProductionOrderHistoryDao.queryBuilder();
+        Where where = query.where();
+
+        try {
+            where.eq("orderId", orderId);
+            return query.query();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
 }

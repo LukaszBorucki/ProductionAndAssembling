@@ -73,4 +73,6 @@ public interface Database {
     List<ProductionOrder> getProductionOrderByStatus(String status);
 
     ProductionOrder getProductionOrderByOrderId(String id);
+
+    List<ProductionOrderHistory> getAllProductionOrderHistoryByOrderId(String orderId);
 }
