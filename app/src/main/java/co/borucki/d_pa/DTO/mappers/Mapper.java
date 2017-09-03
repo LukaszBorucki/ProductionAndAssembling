@@ -3,7 +3,7 @@ package co.borucki.d_pa.DTO.mappers;
 import java.util.ArrayList;
 import java.util.List;
 
-import co.borucki.d_pa.DTO.MachinesDTO;
+import co.borucki.d_pa.DTO.MachineDTO;
 import co.borucki.d_pa.DTO.MachineUsageDTO;
 import co.borucki.d_pa.DTO.MessageDTO;
 import co.borucki.d_pa.DTO.ProductionOrderDTO;
@@ -157,26 +157,26 @@ public class Mapper {
                 , productionOrderRealizationDTO.getFeederateFast());
     }
 
-    public static List<Machine> fromMachineDTOToMachine(List<MachinesDTO> machinesDTOs) {
+    public static List<Machine> fromMachineDTOToMachine(List<MachineDTO> machineDTOs) {
         List<Machine> machineList = new ArrayList<>();
-        for (MachinesDTO machinesDTO : machinesDTOs) {
-            machineList.add(new Machine(machinesDTO.getId()
-                    , machinesDTO.getName()
-                    , machinesDTO.getManufactureYear()
-                    , machinesDTO.getTrademark()
-                    , machinesDTO.getProcesingMaterial()
-                    , machinesDTO.getStatus()));
+        for (MachineDTO machineDTO : machineDTOs) {
+            machineList.add(new Machine(machineDTO.getId()
+                    , machineDTO.getName()
+                    , machineDTO.getManufactureYear()
+                    , machineDTO.getTrademark()
+                    , machineDTO.getProcesingMaterial()
+                    , machineDTO.getStatus()));
         }
         return machineList;
     }
 
-    public static Machine fromMachineDTOToMachine(MachinesDTO machinesDTO) {
-        return new Machine(machinesDTO.getId()
-                , machinesDTO.getName()
-                , machinesDTO.getManufactureYear()
-                , machinesDTO.getTrademark()
-                , machinesDTO.getProcesingMaterial()
-                , machinesDTO.getStatus());
+    public static Machine fromMachineDTOToMachine(MachineDTO machineDTO) {
+        return new Machine(machineDTO.getId()
+                , machineDTO.getName()
+                , machineDTO.getManufactureYear()
+                , machineDTO.getTrademark()
+                , machineDTO.getProcesingMaterial()
+                , machineDTO.getStatus());
     }
 
     public static List<MachineUsage> fromMachineUsageDTOToMachineUsage(List<MachineUsageDTO> machineUsageDTOs) {

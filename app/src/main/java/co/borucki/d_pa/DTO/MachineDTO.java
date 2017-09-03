@@ -4,7 +4,7 @@ package co.borucki.d_pa.DTO;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
-public class MachinesDTO {
+public class MachineDTO {
     private String id;
     private String name;
     private String manufactureYear;
@@ -12,10 +12,10 @@ public class MachinesDTO {
     private String procesingMaterial;
     private int status;
 
-    public MachinesDTO() {
+    public MachineDTO() {
     }
 
-    public MachinesDTO(String id, String name, String manufactureYear, String trademark, String procesingMaterial, int status) {
+    public MachineDTO(String id, String name, String manufactureYear, String trademark, String procesingMaterial, int status) {
         this.id = id;
         this.name = name;
         this.manufactureYear = manufactureYear;
