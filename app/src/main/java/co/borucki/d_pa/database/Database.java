@@ -61,4 +61,8 @@ public interface Database {
     void saveProductionOrderRealization(List<ProductionOrderRealization> productionOrderRealizations);
 
     void saveProductionOrderRealization(ProductionOrderRealization productionOrderRealization);
+
+    List<Machine> getMachine();
+
+    Machine getMachineById(String id);
 }

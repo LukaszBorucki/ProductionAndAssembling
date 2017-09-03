@@ -269,4 +269,23 @@ public class DatabaseOrmImpl extends OrmLiteSqliteOpenHelper implements Database
     public void saveProductionOrderRealization(ProductionOrderRealization productionOrderRealization) {
         mProductionOrderRealizationDao.createOrUpdate(productionOrderRealization);
     }
+
+    @Override
+    public List<Machine> getMachine() {
+        return mMachineDao.queryForAll();
+    }
+
+    @Override
+    public Machine getMachineById(String id) {
+        QueryBuilder<Machine, Integer> query = mMachineDao.queryBuilder();
+        Where where = query.where();
+        try {
+            where.eq("id", id);
+            return query.queryForFirst();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
 }
