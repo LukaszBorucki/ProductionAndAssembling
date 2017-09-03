@@ -68,4 +68,9 @@ public interface Database {
 
     List<MachineUsage> getMachineUsageByMachineId(String id);
 
+    List<ProductionOrder> getAllProductionOrder();
+
+    List<ProductionOrder> getProductionOrderByStatus(String status);
+
+    ProductionOrder getProductionOrderByOrderId(String id);
 }
