@@ -18,7 +18,7 @@ public class Products {
     @DatabaseField(columnName = "material")
     private String material;
     @DatabaseField(columnName = "assembling")
-    private String assembling;
+    private int assembling;
     @DatabaseField(columnName = "description")
     private String description;
     @DatabaseField(columnName = "picture")
@@ -30,7 +30,7 @@ public class Products {
     }
 
     public Products(String code, String series, double weight, int quantityInBox, double length
-            , String material, String assembling, String description, String picture
+            , String material, int assembling, String description, String picture
             , String technicalDrawing) {
         this.code = code;
         this.series = series;
@@ -92,11 +92,11 @@ public class Products {
         this.material = material;
     }
 
-    public String getAssembling() {
+    public int getAssembling() {
         return assembling;
     }
 
-    public void setAssembling(String assembling) {
+    public void setAssembling(int assembling) {
         this.assembling = assembling;
     }
 

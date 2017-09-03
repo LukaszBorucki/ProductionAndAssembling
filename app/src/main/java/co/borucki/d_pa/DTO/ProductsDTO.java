@@ -10,7 +10,7 @@ public class ProductsDTO {
     private int quantityInBox;
     private double length;
     private String material;
-    private String assembling;
+    private int assembling;
     private String description;
     private String picture;
     private String technicalDrawing;
@@ -19,7 +19,7 @@ public class ProductsDTO {
     }
 
     public ProductsDTO(String code, String series, double weight, int quantityInBox, double length
-            , String material, String assembling, String description, String picture
+            , String material, int assembling, String description, String picture
             , String technicalDrawing) {
         this.code = code;
         this.series = series;
@@ -81,11 +81,11 @@ public class ProductsDTO {
         this.material = material;
     }
 
-    public String getAssembling() {
+    public int getAssembling() {
         return assembling;
     }
 
-    public void setAssembling(String assembling) {
+    public void setAssembling(int assembling) {
         this.assembling = assembling;
     }
 
