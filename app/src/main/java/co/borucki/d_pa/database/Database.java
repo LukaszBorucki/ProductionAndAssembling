@@ -65,4 +65,7 @@ public interface Database {
     List<Machine> getMachine();
 
     Machine getMachineById(String id);
+
+    List<MachineUsage> getMachineUsageByMachineId(String id);
+
 }

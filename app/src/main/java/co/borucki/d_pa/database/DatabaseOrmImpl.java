@@ -288,4 +288,18 @@ public class DatabaseOrmImpl extends OrmLiteSqliteOpenHelper implements Database
 
         return null;
     }
+
+    @Override
+    public List<MachineUsage> getMachineUsageByMachineId(String id) {
+        QueryBuilder<MachineUsage, Integer> query = mMachineUsageDao.queryBuilder();
+        Where where = query.where();
+
+        try {
+            where.eq("machinesId", id);
+            return query.query();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
