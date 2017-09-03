@@ -9,6 +9,7 @@ import co.borucki.d_pa.DTO.MessageDTO;
 import co.borucki.d_pa.DTO.ProductionOrdersDTO;
 import co.borucki.d_pa.DTO.ProductionOrdersHistoryDTO;
 import co.borucki.d_pa.DTO.ProductionOrdersRealizationDTO;
+import co.borucki.d_pa.DTO.ProductsDTO;
 import co.borucki.d_pa.DTO.UserDTO;
 import co.borucki.d_pa.model.Machines;
 import co.borucki.d_pa.model.MachinesUsage;
@@ -16,6 +17,7 @@ import co.borucki.d_pa.model.Message;
 import co.borucki.d_pa.model.ProductionOrdersRealization;
 import co.borucki.d_pa.model.ProductionOrders;
 import co.borucki.d_pa.model.ProductionOrdersHistory;
+import co.borucki.d_pa.model.Products;
 import co.borucki.d_pa.model.User;
 
 public class Mapper {
@@ -202,4 +204,37 @@ public class Mapper {
                 , machinesUsageDTO.getEmployee()
                 , machinesUsageDTO.getOrderId());
     }
+
+    public static List<Products> fromProoductsDTOToProducts(List<ProductsDTO> productsDTOs) {
+        List<Products> productsList = new ArrayList<>();
+        for (ProductsDTO productsDTO : productsDTOs) {
+            productsList.add(new Products(productsDTO.getCode()
+                    , productsDTO.getSeries()
+                    , productsDTO.getWeight()
+                    , productsDTO.getQuantityInBox()
+                    , productsDTO.getLength()
+                    , productsDTO.getMaterial()
+                    , productsDTO.getAssembling()
+                    , productsDTO.getDescription()
+                    , productsDTO.getPicture()
+                    , productsDTO.getTechnicalDrawing()));
+        }
+
+        return productsList;
+    }
+
+    public static Products fromProoductsDTOToProducts(ProductsDTO productsDTO) {
+        return new Products(productsDTO.getCode()
+                , productsDTO.getSeries()
+                , productsDTO.getWeight()
+                , productsDTO.getQuantityInBox()
+                , productsDTO.getLength()
+                , productsDTO.getMaterial()
+                , productsDTO.getAssembling()
+                , productsDTO.getDescription()
+                , productsDTO.getPicture()
+                , productsDTO.getTechnicalDrawing());
+
+    }
+
 }
