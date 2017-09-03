@@ -8,7 +8,7 @@ import co.borucki.d_pa.model.ProductionOrderRealization;
 
 public class ProductionOrderRealizationRepositoryImpl implements ProductionOrderRealizationRepository{
     private final Database mDatabase;
-    public static ProductionOrderRealizationRepository mInstance = new ProductionOrderRealizationRepositoryImpl();
+    private static ProductionOrderRealizationRepository mInstance = new ProductionOrderRealizationRepositoryImpl();
     private ProductionOrderRealizationRepositoryImpl() {
     mDatabase= AndroidApplication.getDatabase();
     }

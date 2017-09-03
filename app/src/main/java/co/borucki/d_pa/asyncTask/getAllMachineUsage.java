@@ -24,7 +24,7 @@ public class getAllMachineUsage extends AsyncTask<Void, Void, List<MachineUsageD
 
     @Override
     protected List<MachineUsageDTO> doInBackground(Void... params) {
-        String link = "http://www.diamon.pl/api/production/getAllMachine/?DEVICE="
+        String link = "http://www.diamon.pl/api/production/getAllMachineUsage/?DEVICE="
                 + mDpaRepository.getDeviceId()
                 + "&user="
                 + mDpaRepository.getSignedUser()
