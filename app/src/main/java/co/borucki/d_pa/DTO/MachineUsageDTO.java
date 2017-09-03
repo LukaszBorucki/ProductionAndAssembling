@@ -3,7 +3,7 @@ package co.borucki.d_pa.DTO;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
-public class MachinesUsageDTO {
+public class MachineUsageDTO {
     private int id;
     private String machinesId;
     private String date;
@@ -13,10 +13,10 @@ public class MachinesUsageDTO {
     private String employee;
     private String orderId;
 
-    public MachinesUsageDTO() {
+    public MachineUsageDTO() {
     }
 
-    public MachinesUsageDTO(int id, String machinesId, String date, String startDateTime, String stopDateTime, int status, String employee, String orderId) {
+    public MachineUsageDTO(int id, String machinesId, String date, String startDateTime, String stopDateTime, int status, String employee, String orderId) {
         this.id = id;
         this.machinesId = machinesId;
         this.date = date;

@@ -8,11 +8,11 @@ import co.borucki.d_pa.model.Message;
 public interface MessageRepository {
     void saveMessage(Message message);
 
-    void saveMessages(List<Message> messages);
+    void saveMessage(List<Message> messages);
 
-    List<Message> getAllMessages();
+    List<Message> getAllMessage();
 
-    List<Message> getUnreadMessages();
+    List<Message> getUnreadMessage();
 
     int getLastIndexOfMessage();
 

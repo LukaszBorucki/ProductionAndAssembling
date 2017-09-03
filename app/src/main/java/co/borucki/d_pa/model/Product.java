@@ -1,24 +1,35 @@
-package co.borucki.d_pa.DTO;
+package co.borucki.d_pa.model;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
-public class ProductsDTO {
+@DatabaseTable(tableName = "products")
+public class Product {
+    @DatabaseField(columnName = "code", index = true)
     private String code;
+    @DatabaseField(columnName = "series")
     private String series;
+    @DatabaseField(columnName = "weight")
     private double weight;
+    @DatabaseField(columnName = "quantityInBox")
     private int quantityInBox;
+    @DatabaseField(columnName = "length")
     private double length;
+    @DatabaseField(columnName = "material")
     private String material;
+    @DatabaseField(columnName = "assembling")
     private int assembling;
+    @DatabaseField(columnName = "description")
     private String description;
+    @DatabaseField(columnName = "picture")
     private String picture;
+    @DatabaseField(columnName = "technicalDrawing")
     private String technicalDrawing;
 
-    public ProductsDTO() {
+    public Product() {
     }
 
-    public ProductsDTO(String code, String series, double weight, int quantityInBox, double length
+    public Product(String code, String series, double weight, int quantityInBox, double length
             , String material, int assembling, String description, String picture
             , String technicalDrawing) {
         this.code = code;

@@ -3,7 +3,7 @@ package co.borucki.d_pa.DTO;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
-public class ProductionOrdersRealizationDTO {
+public class ProductionOrderRealizationDTO {
     private int id;
     private String orderId;
     private String saveDate;
@@ -17,10 +17,10 @@ public class ProductionOrdersRealizationDTO {
     private String feederateWorking;
     private String feederateFast;
 
-    public ProductionOrdersRealizationDTO() {
+    public ProductionOrderRealizationDTO() {
     }
 
-    public ProductionOrdersRealizationDTO(int id, String orderId, String saveDate, String startDateTime
+    public ProductionOrderRealizationDTO(int id, String orderId, String saveDate, String startDateTime
             , String stopDateTime, int quantity, String machineId, float unitTime
             , String speedSpindle1, String speedSpindle2, String feederateWorking
             , String feederateFast) {

@@ -5,7 +5,7 @@ import java.util.List;
 import co.borucki.d_pa.model.User;
 
 public interface UserRepository {
-    List<User> getAllUsers();
+    List<User> getAllUser();
 
     void saveUser(User user);
 

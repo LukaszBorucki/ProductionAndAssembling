@@ -43,7 +43,7 @@ public class GetAllUsers extends AsyncTask<String, Void, List<UserDTO>> {
     @Override
     protected void onPostExecute(List<UserDTO> userDTOList) {
         List<User> userList = new ArrayList<>();
-        userList.addAll(Mapper.fromUserDTOListToUserList(userDTOList));
+        userList.addAll(Mapper.fromUserDTOToUser(userDTOList));
         for (User user : userList) {
             mUserRepository.saveUser(user);
         }

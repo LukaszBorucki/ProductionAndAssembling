@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Parcelable;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
@@ -17,16 +16,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.springframework.http.converter.json.GsonHttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 
-import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import co.borucki.d_pa.DTO.MessageDTO;
 import co.borucki.d_pa.DTO.mappers.Mapper;
@@ -116,7 +111,7 @@ public class MessageFragment extends Fragment {
 
     private void loadData() {
 
-        if (MyDevice.isOnLine(getContext())) {
+        if (MyDevice.isOnLine(getActivity())) {
             new GetMessages().execute();
         }
     }
@@ -130,7 +125,7 @@ public class MessageFragment extends Fragment {
 
         @Override
         protected List<MessageDTO> doInBackground(String... params) {
-            String link = "http://www.diamon.pl/api/getAllMessages/?DEVICE="
+            String link = "http://www.diamon.pl/api/getAllMessage/?DEVICE="
                     + mDpaRepository.getDeviceId()
                     + "&user="
                     + mDpaRepository.getSignedUser()
@@ -145,16 +140,16 @@ public class MessageFragment extends Fragment {
 
         @Override
         protected void onPostExecute(List<MessageDTO> messageDTOs) {
-            mMessageRepository.saveMessages(Mapper.fromMessageDTOToMessage(messageDTOs));
+            mMessageRepository.saveMessage(Mapper.fromMessageDTOToMessage(messageDTOs));
             if (mMessageRepository.getLastIndexOfMessage() > mDpaRepository.getLastMessageIndex()) {
                 mDpaRepository.setLastMessageIndex(mMessageRepository.getLastIndexOfMessage());
             }
 
 
             if (allMessages) {
-                mMessageAdapter.setData(mMessageRepository.getAllMessages());
+                mMessageAdapter.setData(mMessageRepository.getAllMessage());
             } else {
-                mMessageAdapter.setData(mMessageRepository.getUnreadMessages());
+                mMessageAdapter.setData(mMessageRepository.getUnreadMessage());
             }
         }
     }
