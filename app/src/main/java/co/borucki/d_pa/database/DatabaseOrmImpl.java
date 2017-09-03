@@ -269,4 +269,100 @@ public class DatabaseOrmImpl extends OrmLiteSqliteOpenHelper implements Database
     public void saveProductionOrderRealization(ProductionOrderRealization productionOrderRealization) {
         mProductionOrderRealizationDao.createOrUpdate(productionOrderRealization);
     }
+
+    @Override
+    public List<Machine> getMachine() {
+        return mMachineDao.queryForAll();
+    }
+
+    @Override
+    public Machine getMachineById(String id) {
+        QueryBuilder<Machine, Integer> query = mMachineDao.queryBuilder();
+        Where where = query.where();
+        try {
+            where.eq("id", id);
+            return query.queryForFirst();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    @Override
+    public List<MachineUsage> getMachineUsageByMachineId(String id) {
+        QueryBuilder<MachineUsage, Integer> query = mMachineUsageDao.queryBuilder();
+        Where where = query.where();
+
+        try {
+            where.eq("machinesId", id);
+            return query.query();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public List<ProductionOrder> getAllProductionOrder() {
+        return mProductionOrderDao.queryForAll();
+    }
+
+    @Override
+    public List<ProductionOrder> getProductionOrderByStatus(String status) {
+        QueryBuilder<ProductionOrder, Integer> query = mProductionOrderDao.queryBuilder();
+        Where where = query.where();
+
+        try {
+            where.eq("orderStatus", status);
+            return query.query();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    @Override
+    public ProductionOrder getProductionOrderByOrderId(String id) {
+        QueryBuilder<ProductionOrder, Integer> query = mProductionOrderDao.queryBuilder();
+        Where where = query.where();
+
+        try {
+            where.eq("id", id);
+            return query.queryForFirst();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public List<ProductionOrderHistory> getAllProductionOrderHistoryByOrderId(String orderId) {
+        QueryBuilder<ProductionOrderHistory, Integer> query = mProductionOrderHistoryDao.queryBuilder();
+        Where where = query.where();
+
+        try {
+            where.eq("orderId", orderId);
+            return query.query();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    @Override
+    public List<ProductionOrderRealization> getProductionOrderRealizationByOrderId(String orderId) {
+        QueryBuilder<ProductionOrderRealization, Integer> query = mProductionOrderRealizationDao.queryBuilder();
+        Where where = query.where();
+
+        try {
+            where.eq("orderId", orderId);
+            return query.query();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

@@ -61,4 +61,20 @@ public interface Database {
     void saveProductionOrderRealization(List<ProductionOrderRealization> productionOrderRealizations);
 
     void saveProductionOrderRealization(ProductionOrderRealization productionOrderRealization);
+
+    List<Machine> getMachine();
+
+    Machine getMachineById(String id);
+
+    List<MachineUsage> getMachineUsageByMachineId(String id);
+
+    List<ProductionOrder> getAllProductionOrder();
+
+    List<ProductionOrder> getProductionOrderByStatus(String status);
+
+    ProductionOrder getProductionOrderByOrderId(String id);
+
+    List<ProductionOrderHistory> getAllProductionOrderHistoryByOrderId(String orderId);
+
+    List<ProductionOrderRealization> getProductionOrderRealizationByOrderId(String orderId);
 }
