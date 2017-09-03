@@ -15,7 +15,7 @@ public class ProductionOrderHistoryRepositoryImpl implements ProductionOrderHist
         mDatabase = AndroidApplication.getDatabase();
     }
 
-    public ProductionOrderHistoryRepositoryImpl getInstance() {
+    public static ProductionOrderHistoryRepositoryImpl getInstance() {
         return mInstance;
     }
 

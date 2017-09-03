@@ -75,4 +75,6 @@ public interface Database {
     ProductionOrder getProductionOrderByOrderId(String id);
 
     List<ProductionOrderHistory> getAllProductionOrderHistoryByOrderId(String orderId);
+
+    List<ProductionOrderRealization> getProductionOrderRealizationByOrderId(String orderId);
 }
