@@ -4,18 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 import co.borucki.d_pa.DTO.MachinesDTO;
-import co.borucki.d_pa.DTO.MachinesUsageDTO;
+import co.borucki.d_pa.DTO.MachineUsageDTO;
 import co.borucki.d_pa.DTO.MessageDTO;
-import co.borucki.d_pa.DTO.ProductionOrdersDTO;
-import co.borucki.d_pa.DTO.ProductionOrdersHistoryDTO;
-import co.borucki.d_pa.DTO.ProductionOrdersRealizationDTO;
+import co.borucki.d_pa.DTO.ProductionOrderDTO;
+import co.borucki.d_pa.DTO.ProductionOrderHistoryDTO;
+import co.borucki.d_pa.DTO.ProductionOrderRealizationDTO;
+import co.borucki.d_pa.DTO.ProductDTO;
 import co.borucki.d_pa.DTO.UserDTO;
-import co.borucki.d_pa.model.Machines;
-import co.borucki.d_pa.model.MachinesUsage;
+import co.borucki.d_pa.model.Machine;
+import co.borucki.d_pa.model.MachineUsage;
 import co.borucki.d_pa.model.Message;
-import co.borucki.d_pa.model.ProductionOrdersRealization;
-import co.borucki.d_pa.model.ProductionOrders;
-import co.borucki.d_pa.model.ProductionOrdersHistory;
+import co.borucki.d_pa.model.ProductionOrderRealization;
+import co.borucki.d_pa.model.ProductionOrder;
+import co.borucki.d_pa.model.ProductionOrderHistory;
+import co.borucki.d_pa.model.Product;
 import co.borucki.d_pa.model.User;
 
 public class Mapper {
@@ -33,7 +35,7 @@ public class Mapper {
                 , "password");
     }
 
-    public static List<User> fromUserDTOListToUserList(List<UserDTO> userDTOs) {
+    public static List<User> fromUserDTOToUser(List<UserDTO> userDTOs) {
         List<User> userList = new ArrayList<>();
         for (UserDTO userDTO : userDTOs) {
             userList.add(new User(
@@ -71,105 +73,105 @@ public class Mapper {
     }
 
 
-    public static List<ProductionOrders> fromProductionOrdersDTOToProductionOrders(List<ProductionOrdersDTO> productionOrdersDTOs) {
-        List<ProductionOrders> productionOrdersList = new ArrayList<>();
-        for (ProductionOrdersDTO productionOrdersDTO : productionOrdersDTOs) {
-            productionOrdersList.add(new ProductionOrders(productionOrdersDTO.getIdOrderTurning()
-                    , productionOrdersDTO.getOrderProduct()
-                    , productionOrdersDTO.getOrderStatus()
-                    , productionOrdersDTO.getOrderDate()
-                    , productionOrdersDTO.getOrderTermOfRealization()
-                    , productionOrdersDTO.getOrderQuantity()
-                    , productionOrdersDTO.getOrderEmployee()
-                    , productionOrdersDTO.getOrderMachineId()));
+    public static List<ProductionOrder> fromProductionOrderDTOToProductionOrder(List<ProductionOrderDTO> productionOrderDTOs) {
+        List<ProductionOrder> productionOrderList = new ArrayList<>();
+        for (ProductionOrderDTO productionOrderDTO : productionOrderDTOs) {
+            productionOrderList.add(new ProductionOrder(productionOrderDTO.getIdOrderTurning()
+                    , productionOrderDTO.getOrderProduct()
+                    , productionOrderDTO.getOrderStatus()
+                    , productionOrderDTO.getOrderDate()
+                    , productionOrderDTO.getOrderTermOfRealization()
+                    , productionOrderDTO.getOrderQuantity()
+                    , productionOrderDTO.getOrderEmployee()
+                    , productionOrderDTO.getOrderMachineId()));
         }
-        return productionOrdersList;
+        return productionOrderList;
     }
 
-    public static ProductionOrders fromProductionOrdersDTOToProductionOrders(ProductionOrdersDTO productionOrdersDTO) {
-        return new ProductionOrders(productionOrdersDTO.getIdOrderTurning()
-                , productionOrdersDTO.getOrderProduct()
-                , productionOrdersDTO.getOrderStatus()
-                , productionOrdersDTO.getOrderDate()
-                , productionOrdersDTO.getOrderTermOfRealization()
-                , productionOrdersDTO.getOrderQuantity()
-                , productionOrdersDTO.getOrderEmployee()
-                , productionOrdersDTO.getOrderMachineId());
+    public static ProductionOrder fromProductionOrderDTOToProductionOrder(ProductionOrderDTO productionOrderDTO) {
+        return new ProductionOrder(productionOrderDTO.getIdOrderTurning()
+                , productionOrderDTO.getOrderProduct()
+                , productionOrderDTO.getOrderStatus()
+                , productionOrderDTO.getOrderDate()
+                , productionOrderDTO.getOrderTermOfRealization()
+                , productionOrderDTO.getOrderQuantity()
+                , productionOrderDTO.getOrderEmployee()
+                , productionOrderDTO.getOrderMachineId());
     }
 
-    public static List<ProductionOrdersHistory> fromProductOrdersHistoryDTOToProductOrdersHistory(List<ProductionOrdersHistoryDTO> productionOrdersHistoryDTOs) {
-        List<ProductionOrdersHistory> productionOrdersHistoryList = new ArrayList<>();
-        for (ProductionOrdersHistoryDTO productionOrdersHistoryDTO : productionOrdersHistoryDTOs) {
-            productionOrdersHistoryList.add(new ProductionOrdersHistory(productionOrdersHistoryDTO.getIdOrderTurning()
-                    , productionOrdersHistoryDTO.getOrderId()
-                    , productionOrdersHistoryDTO.getDate()
-                    , productionOrdersHistoryDTO.getTime()
-                    , productionOrdersHistoryDTO.getEmployee()
-                    , productionOrdersHistoryDTO.getContents()));
+    public static List<ProductionOrderHistory> fromProductOrderHistoryDTOToProductOrderHistory(List<ProductionOrderHistoryDTO> productionOrderHistoryDTOs) {
+        List<ProductionOrderHistory> productionOrderHistoryList = new ArrayList<>();
+        for (ProductionOrderHistoryDTO productionOrderHistoryDTO : productionOrderHistoryDTOs) {
+            productionOrderHistoryList.add(new ProductionOrderHistory(productionOrderHistoryDTO.getIdOrderTurning()
+                    , productionOrderHistoryDTO.getOrderId()
+                    , productionOrderHistoryDTO.getDate()
+                    , productionOrderHistoryDTO.getTime()
+                    , productionOrderHistoryDTO.getEmployee()
+                    , productionOrderHistoryDTO.getContents()));
         }
 
 
-        return productionOrdersHistoryList;
+        return productionOrderHistoryList;
     }
 
-    public static ProductionOrdersHistory fromProductOrdersHistoryDTOToProductOrdersHistory(ProductionOrdersHistoryDTO productionOrdersHistoryDTO) {
-        return new ProductionOrdersHistory(productionOrdersHistoryDTO.getIdOrderTurning()
-                , productionOrdersHistoryDTO.getOrderId()
-                , productionOrdersHistoryDTO.getDate()
-                , productionOrdersHistoryDTO.getTime()
-                , productionOrdersHistoryDTO.getEmployee()
-                , productionOrdersHistoryDTO.getContents());
+    public static ProductionOrderHistory fromProductOrderHistoryDTOToProductOrderHistory(ProductionOrderHistoryDTO productionOrderHistoryDTO) {
+        return new ProductionOrderHistory(productionOrderHistoryDTO.getIdOrderTurning()
+                , productionOrderHistoryDTO.getOrderId()
+                , productionOrderHistoryDTO.getDate()
+                , productionOrderHistoryDTO.getTime()
+                , productionOrderHistoryDTO.getEmployee()
+                , productionOrderHistoryDTO.getContents());
     }
 
-    public static List<ProductionOrdersRealization> fromProductOrdersRealizationDTOToProductOrdersRealization(List<ProductionOrdersRealizationDTO> productionOrdersRealizationDTOs) {
-        List<ProductionOrdersRealization> productionOrdersRealizationList = new ArrayList<>();
-        for (ProductionOrdersRealizationDTO productionOrdersRealizationDTO : productionOrdersRealizationDTOs) {
-            productionOrdersRealizationList.add(new ProductionOrdersRealization(productionOrdersRealizationDTO.getId()
-                    , productionOrdersRealizationDTO.getOrderId()
-                    , productionOrdersRealizationDTO.getSaveDate()
-                    , productionOrdersRealizationDTO.getStartDateTime()
-                    , productionOrdersRealizationDTO.getStopDateTime()
-                    , productionOrdersRealizationDTO.getQuantity()
-                    , productionOrdersRealizationDTO.getMachineId()
-                    , productionOrdersRealizationDTO.getUnitTime()
-                    , productionOrdersRealizationDTO.getSpeedSpindle1()
-                    , productionOrdersRealizationDTO.getSpeedSpindle2()
-                    , productionOrdersRealizationDTO.getFeederateWorking()
-                    , productionOrdersRealizationDTO.getFeederateFast()));
+    public static List<ProductionOrderRealization> fromProductOrderRealizationDTOToProductOrderRealization(List<ProductionOrderRealizationDTO> productionOrderRealizationDTOs) {
+        List<ProductionOrderRealization> productionOrderRealizationList = new ArrayList<>();
+        for (ProductionOrderRealizationDTO productionOrderRealizationDTO : productionOrderRealizationDTOs) {
+            productionOrderRealizationList.add(new ProductionOrderRealization(productionOrderRealizationDTO.getId()
+                    , productionOrderRealizationDTO.getOrderId()
+                    , productionOrderRealizationDTO.getSaveDate()
+                    , productionOrderRealizationDTO.getStartDateTime()
+                    , productionOrderRealizationDTO.getStopDateTime()
+                    , productionOrderRealizationDTO.getQuantity()
+                    , productionOrderRealizationDTO.getMachineId()
+                    , productionOrderRealizationDTO.getUnitTime()
+                    , productionOrderRealizationDTO.getSpeedSpindle1()
+                    , productionOrderRealizationDTO.getSpeedSpindle2()
+                    , productionOrderRealizationDTO.getFeederateWorking()
+                    , productionOrderRealizationDTO.getFeederateFast()));
         }
-        return productionOrdersRealizationList;
+        return productionOrderRealizationList;
     }
 
-    public static ProductionOrdersRealization fromProductOrdersRealizationDTOToProductOrdersRealization(ProductionOrdersRealizationDTO productionOrdersRealizationDTO) {
-        return new ProductionOrdersRealization(productionOrdersRealizationDTO.getId()
-                , productionOrdersRealizationDTO.getOrderId()
-                , productionOrdersRealizationDTO.getSaveDate()
-                , productionOrdersRealizationDTO.getStartDateTime()
-                , productionOrdersRealizationDTO.getStopDateTime()
-                , productionOrdersRealizationDTO.getQuantity()
-                , productionOrdersRealizationDTO.getMachineId()
-                , productionOrdersRealizationDTO.getUnitTime()
-                , productionOrdersRealizationDTO.getSpeedSpindle1()
-                , productionOrdersRealizationDTO.getSpeedSpindle2()
-                , productionOrdersRealizationDTO.getFeederateWorking()
-                , productionOrdersRealizationDTO.getFeederateFast());
+    public static ProductionOrderRealization fromProductOrderRealizationDTOToProductOrderRealization(ProductionOrderRealizationDTO productionOrderRealizationDTO) {
+        return new ProductionOrderRealization(productionOrderRealizationDTO.getId()
+                , productionOrderRealizationDTO.getOrderId()
+                , productionOrderRealizationDTO.getSaveDate()
+                , productionOrderRealizationDTO.getStartDateTime()
+                , productionOrderRealizationDTO.getStopDateTime()
+                , productionOrderRealizationDTO.getQuantity()
+                , productionOrderRealizationDTO.getMachineId()
+                , productionOrderRealizationDTO.getUnitTime()
+                , productionOrderRealizationDTO.getSpeedSpindle1()
+                , productionOrderRealizationDTO.getSpeedSpindle2()
+                , productionOrderRealizationDTO.getFeederateWorking()
+                , productionOrderRealizationDTO.getFeederateFast());
     }
 
-    public static List<Machines> fromMachinesDTOToMachines(List<MachinesDTO> machinesDTOs) {
-        List<Machines> machinesList = new ArrayList<>();
+    public static List<Machine> fromMachineDTOToMachine(List<MachinesDTO> machinesDTOs) {
+        List<Machine> machineList = new ArrayList<>();
         for (MachinesDTO machinesDTO : machinesDTOs) {
-            machinesList.add(new Machines(machinesDTO.getId()
+            machineList.add(new Machine(machinesDTO.getId()
                     , machinesDTO.getName()
                     , machinesDTO.getManufactureYear()
                     , machinesDTO.getTrademark()
                     , machinesDTO.getProcesingMaterial()
                     , machinesDTO.getStatus()));
         }
-        return machinesList;
+        return machineList;
     }
 
-    public static Machines fromMachinesDTOToMachines(MachinesDTO machinesDTO) {
-        return new Machines(machinesDTO.getId()
+    public static Machine fromMachineDTOToMachine(MachinesDTO machinesDTO) {
+        return new Machine(machinesDTO.getId()
                 , machinesDTO.getName()
                 , machinesDTO.getManufactureYear()
                 , machinesDTO.getTrademark()
@@ -177,29 +179,62 @@ public class Mapper {
                 , machinesDTO.getStatus());
     }
 
-    public static List<MachinesUsage> fromMachinesUsageDTOToMachinesUsage(List<MachinesUsageDTO> machinesUsageDTOs) {
-        List<MachinesUsage> machinesUsageList = new ArrayList<>();
-        for (MachinesUsageDTO machinesUsageDTO : machinesUsageDTOs) {
-            machinesUsageList.add(new MachinesUsage(machinesUsageDTO.getId()
-                    , machinesUsageDTO.getMachinesId()
-                    , machinesUsageDTO.getDate()
-                    , machinesUsageDTO.getStartDateTime()
-                    , machinesUsageDTO.getStopDateTime()
-                    , machinesUsageDTO.getStatus()
-                    , machinesUsageDTO.getEmployee()
-                    , machinesUsageDTO.getOrderId()));
+    public static List<MachineUsage> fromMachineUsageDTOToMachineUsage(List<MachineUsageDTO> machineUsageDTOs) {
+        List<MachineUsage> machineUsageList = new ArrayList<>();
+        for (MachineUsageDTO machineUsageDTO : machineUsageDTOs) {
+            machineUsageList.add(new MachineUsage(machineUsageDTO.getId()
+                    , machineUsageDTO.getMachinesId()
+                    , machineUsageDTO.getDate()
+                    , machineUsageDTO.getStartDateTime()
+                    , machineUsageDTO.getStopDateTime()
+                    , machineUsageDTO.getStatus()
+                    , machineUsageDTO.getEmployee()
+                    , machineUsageDTO.getOrderId()));
         }
-        return machinesUsageList;
+        return machineUsageList;
     }
 
-    public static MachinesUsage fromMachinesUsageDTOToMachinesUsage(MachinesUsageDTO machinesUsageDTO) {
-        return new MachinesUsage(machinesUsageDTO.getId()
-                , machinesUsageDTO.getMachinesId()
-                , machinesUsageDTO.getDate()
-                , machinesUsageDTO.getStartDateTime()
-                , machinesUsageDTO.getStopDateTime()
-                , machinesUsageDTO.getStatus()
-                , machinesUsageDTO.getEmployee()
-                , machinesUsageDTO.getOrderId());
+    public static MachineUsage fromMachineUsageDTOToMachineUsage(MachineUsageDTO machineUsageDTO) {
+        return new MachineUsage(machineUsageDTO.getId()
+                , machineUsageDTO.getMachinesId()
+                , machineUsageDTO.getDate()
+                , machineUsageDTO.getStartDateTime()
+                , machineUsageDTO.getStopDateTime()
+                , machineUsageDTO.getStatus()
+                , machineUsageDTO.getEmployee()
+                , machineUsageDTO.getOrderId());
     }
+
+    public static List<Product> fromProoductDTOToProduct(List<ProductDTO> productDTOs) {
+        List<Product> productsList = new ArrayList<>();
+        for (ProductDTO productDTO : productDTOs) {
+            productsList.add(new Product(productDTO.getCode()
+                    , productDTO.getSeries()
+                    , productDTO.getWeight()
+                    , productDTO.getQuantityInBox()
+                    , productDTO.getLength()
+                    , productDTO.getMaterial()
+                    , productDTO.getAssembling()
+                    , productDTO.getDescription()
+                    , productDTO.getPicture()
+                    , productDTO.getTechnicalDrawing()));
+        }
+
+        return productsList;
+    }
+
+    public static Product fromProoductDTOToProduct(ProductDTO productDTO) {
+        return new Product(productDTO.getCode()
+                , productDTO.getSeries()
+                , productDTO.getWeight()
+                , productDTO.getQuantityInBox()
+                , productDTO.getLength()
+                , productDTO.getMaterial()
+                , productDTO.getAssembling()
+                , productDTO.getDescription()
+                , productDTO.getPicture()
+                , productDTO.getTechnicalDrawing());
+
+    }
+
 }

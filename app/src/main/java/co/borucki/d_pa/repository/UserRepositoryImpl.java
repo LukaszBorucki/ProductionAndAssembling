@@ -21,8 +21,8 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public List<User> getAllUsers() {
-        return mDatabase.getAllUsers();
+    public List<User> getAllUser() {
+        return mDatabase.getAllUser();
     }
 
     @Override

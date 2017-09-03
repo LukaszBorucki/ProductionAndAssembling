@@ -27,18 +27,18 @@ public class MessageRepositoryImpl implements MessageRepository {
     }
 
     @Override
-    public void saveMessages(List<Message> messages) {
-        mDatabase.saveMessages(messages);
+    public void saveMessage(List<Message> messages) {
+        mDatabase.saveMessage(messages);
     }
 
     @Override
-    public List<Message> getAllMessages() {
-        return mDatabase.getAllMessages();
+    public List<Message> getAllMessage() {
+        return mDatabase.getAllMessage();
     }
 
     @Override
-    public List<Message> getUnreadMessages() {
-        return mDatabase.getUnreadMessages();
+    public List<Message> getUnreadMessage() {
+        return mDatabase.getUnreadMessage();
     }
 
     @Override

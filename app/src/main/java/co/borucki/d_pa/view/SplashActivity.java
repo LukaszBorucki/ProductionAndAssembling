@@ -14,9 +14,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.telephony.TelephonyManager;
 import android.view.View;
-import android.view.WindowManager;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -75,7 +72,7 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     private void loginUser() {
-        allUsers.addAll(mUserRepository.getAllUsers());
+        allUsers.addAll(mUserRepository.getAllUser());
         spinner = (Spinner) findViewById(R.id.spinner);
         ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, android.R.id.text1);
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

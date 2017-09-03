@@ -4,7 +4,7 @@ import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
 @DatabaseTable(tableName = "machines")
-public class Machines {
+public class Machine {
     @DatabaseField(columnName = "id", index = true)
     private String id;
     @DatabaseField(columnName = "name")
@@ -18,10 +18,10 @@ public class Machines {
     @DatabaseField(columnName = "status")
     private int status;
 
-    public Machines() {
+    public Machine() {
     }
 
-    public Machines(String id, String name, String manufactureYear, String trademark, String procesingMaterial, int status) {
+    public Machine(String id, String name, String manufactureYear, String trademark, String procesingMaterial, int status) {
         this.id = id;
         this.name = name;
         this.manufactureYear = manufactureYear;
